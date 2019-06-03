@@ -1,5 +1,5 @@
-@extends('layout');
+@extends('layout')
 
-@section('content');
+@section('content')
     Welcome
 @endsection
