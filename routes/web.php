@@ -22,3 +22,7 @@ Route::get('/counter', function () {
 Route::post('/counter', function () {
     return view('counter');
 });
+Route::get('/blog', 'Blogcontroller@index');
+Route::post('/blog', 'Blogcontroller@store');
+
+Route::get('/blog/create', 'Blogcontroller@create');
