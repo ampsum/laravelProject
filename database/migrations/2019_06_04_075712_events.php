@@ -20,6 +20,7 @@ class Events extends Migration
             $table->text('address');
             $table->string('date');
             $table->text('cover');
+            $table->text('content');
             $table->string('lat');
             $table->string('long');
         });

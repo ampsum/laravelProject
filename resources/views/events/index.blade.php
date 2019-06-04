@@ -4,10 +4,12 @@
     <ul>
         @foreach ($events as $event)
             <li>
-                <img src="" alt="">
-                <h3>{{$event->title}}</h3>
-                <p>Adress: {{$event->address}}</p>
-                <p>Datum: {{$event->date}}</p>
+            <a href="/events/{{$event->id}}">
+                    <img src="" alt="">
+                    <h3>{{$event->title}}</h3>
+                    <p>Adress: {{$event->address}}</p>
+                    <p>Datum: {{$event->date}}</p>
+                </a>
             </li>
         @endforeach
     </ul>

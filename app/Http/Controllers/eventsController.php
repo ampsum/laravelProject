@@ -34,15 +34,16 @@ class eventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-           events::create([
+        events::create([
             'title' => request('title'),
             'address' => request('address'),
             'date' => request('date'),
-            'cover' => request('cover'),
-            'lat' => request('lat'),
-            'long' => request('long')
+            'cover' => 'IMAGE TO BE ADDED',
+            'content' => request('content'),
+            'lat' => 1,
+            'long' => 2,
          ]);
          return redirect('/events');
     }
@@ -53,9 +54,10 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function show(events $events)
+    public function show($id)
     {
-        //
+        $event = events::findOrFail($id);
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -64,9 +66,10 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function edit(events $events)
+    public function edit($id)
     {
-        //
+       $event = events::findOrFail($id);
+       return view('events.edit', compact('event')); 
     }
 
     /**
@@ -76,9 +79,19 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, events $events)
-    {
-        //
+    public function update($id)
+    {   $event = events::findOrFail($id);
+        $event->title = request('title');
+        $event->address = request('address');
+        $event->date = request('date');
+        $event->cover =  'IMAGE TO BE ADDED';
+        $event->content =   request('content');
+        $event->lat  =  1;
+        $event->long = 2;
+
+        $event->save();
+        
+         return redirect('/events');
     }
 
     /**
@@ -87,8 +100,9 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(events $events)
+    public function destroy($id)
     {
-        //
+        events::findOrFail($id)->delete();
+        return redirect('/events');
     }
 }
