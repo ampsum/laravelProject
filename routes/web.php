@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/counter', function () {
+    return view('counter');
+});
+
+Route::post('/counter', function () {
+    return view('counter');
+});
+
+Route::resource('events','eventsController');
+
 Route::get('/blog', 'Blogcontroller@index');
 Route::post('/blog', 'Blogcontroller@store');
 
