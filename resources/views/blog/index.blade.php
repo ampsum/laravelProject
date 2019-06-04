@@ -7,11 +7,11 @@
 @section('content')
 
     <form action="/blog/create" method="POST">
-{{csrf_field()}}
+    @csrf
     <button type="submit">Skapa nytt inlägg</button>
     </form>
 
-    @foreach($posts as $post)
+{{--    @foreach($posts as $post)
         <h2>
             {{ $post->title}}
         </h2>
@@ -22,7 +22,17 @@
 
         <p><button>Gilla</button> {{$post->likes}}</p>
         <p>Av: {{$post->userName}}</p>
+    @endforeach--}}
+
+    <ul>
+    @foreach ($posts as $post)
+        <li>
+            <a href="/blog/{{$post->id}}">
+            <h2>{{$post->title}}</h2>
+            </a>
+        </li>
     @endforeach
+    </ul>
 
 
 

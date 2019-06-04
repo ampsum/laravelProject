@@ -1,10 +1,14 @@
 @extends('layout')
 
-@section('content')
+@section('title')
     Skapa nytt inlägg
+@endsection
+
+@section('content')
+
 
     <form action="/blog" method="POST">
-        {{csrf_field()}}
+        @csrf
         <input type="text" placeholder="Titel" name="title">
         <textarea placeholder="Innehåll" name="content"></textarea>
         <button type="submit">Publicera</button>
