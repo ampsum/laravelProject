@@ -36,15 +36,41 @@ class eventsController extends Controller
      */
     public function store(Request $request)
     {
-        events::create([
-            'title' => request('title'),
-            'address' => request('address'),
-            'date' => request('date'),
-            'cover' => 'IMAGE TO BE ADDED',
-            'content' => request('content'),
-            'lat' => 1,
-            'long' => 2,
-         ]);
+        if($cover = $request->file('cover')) {
+            $name = $cover->getClientOriginalName();
+            if($cover->move('images', $name)) {
+                events::create([
+                    'title' => request('title'),
+                    'address' => request('address'),
+                    'date' => request('date'),
+                    'cover' => $name,
+                    'content' => request('content'),
+                    'lat' => 1,
+                    'long' => 2,
+                ]);
+            } else {
+                events::create([
+                    'title' => request('title'),
+                    'address' => request('address'),
+                    'date' => request('date'),
+                    'cover' => 'empty',
+                    'content' => request('content'),
+                    'lat' => 1,
+                    'long' => 2,
+                ]);
+            }
+        } else {
+            events::create([
+                    'title' => request('title'),
+                    'address' => request('address'),
+                    'date' => request('date'),
+                    'cover' => 'empty',
+                    'content' => request('content'),
+                    'lat' => 1,
+                    'long' => 2,
+                ]);
+        };
+        
          return redirect('/events');
     }
 
@@ -79,18 +105,40 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
-    {   $event = events::findOrFail($id);
-        $event->title = request('title');
-        $event->address = request('address');
-        $event->date = request('date');
-        $event->cover =  'IMAGE TO BE ADDED';
-        $event->content =   request('content');
-        $event->lat  =  1;
-        $event->long = 2;
-
-        $event->save();
-        
+    public function update($id, Request $request)
+    {   
+        $event = events::findOrFail($id);
+        if($cover = $request->file('cover')) {
+            $name = $cover->getClientOriginalName();
+            if($cover->move('images', $name)) {
+                $event->title = request('title');
+                $event->address = request('address');
+                $event->date = request('date');
+                $event->cover =  $name;
+                $event->content =   request('content');
+                $event->lat  =  1;
+                $event->long = 2;
+                $event->save();
+            } else {
+                $event->title = request('title');
+                $event->address = request('address');
+                $event->date = request('date');
+                $event->cover =  'empty';
+                $event->content =   request('content');
+                $event->lat  =  1;
+                $event->long = 2;
+                $event->save();
+            }
+        } else {
+            $event->title = request('title');
+                $event->address = request('address');
+                $event->date = request('date');
+                $event->cover =  'empty';
+                $event->content =   request('content');
+                $event->lat  =  1;
+                $event->long = 2;
+                $event->save();
+        }
          return redirect('/events');
     }
 

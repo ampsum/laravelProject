@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <form action="/events" method="POST">
+    <form action="/events" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <input type="hidden" name="event-set" value="1">
         <input type="text" name="title" placeholder="Title">

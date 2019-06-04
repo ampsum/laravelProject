@@ -5,7 +5,10 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="event">
-                    <img src="" alt="">
+                    @php
+                        if($event->cover !== 'empty') :  @endphp
+                             <img src="{{asset('/images') . '/' . $event->cover}}" alt="">
+                    @php endif; @endphp
                     <h3>{{$event->title}}</h3>
                     <p>Adress: {{$event->address}}</p>
                     <p>Datum: {{$event->date}}</p>
