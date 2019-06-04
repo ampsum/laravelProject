@@ -14,7 +14,8 @@ class eventsController extends Controller
      */
     public function index()
     {
-        //
+        $events = events::all();
+        return view('events.index', compact('events'));
     }
 
     /**
@@ -24,7 +25,7 @@ class eventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
     /**
