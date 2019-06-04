@@ -25,7 +25,11 @@ Route::post('/counter', function () {
 
 Route::resource('events','eventsController');
 
+//Route::resource('blog', 'Blogcontroller');
 Route::get('/blog', 'Blogcontroller@index');
-Route::post('/blog', 'Blogcontroller@store');
-
 Route::post('/blog/create', 'Blogcontroller@create');
+Route::get('/blog/{post}', 'Blogcontroller@show'); //
+Route::post('/blog', 'Blogcontroller@store');
+Route::get('/blog/{post}/edit', 'Blogcontroller@edit'); //
+Route::patch('/blog/{post}', 'Blogcontroller@update'); //
+Route::delete('/blog/{post}', 'Blogcontroller@destroy'); //
