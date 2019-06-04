@@ -1,9 +1,12 @@
 @extends('layout')
 
-@section('content')
+@section('title')
     Blogg
+@endsection
 
-    <form action="/blog/create" method="GET">
+@section('content')
+
+    <form action="/blog/create" method="POST">
 {{csrf_field()}}
     <button type="submit">Skapa nytt inlägg</button>
     </form>
@@ -16,9 +19,11 @@
         <p>
             {{$post->content}}
         </p>
-        <button>Gilla</button>
-        <p>Likes: {{$post->likes}}</p>
+
+        <p><button>Gilla</button> {{$post->likes}}</p>
         <p>Av: {{$post->userName}}</p>
     @endforeach
+
+
 
 @endsection
