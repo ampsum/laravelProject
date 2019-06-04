@@ -104,10 +104,14 @@
                              <br>
                             Så här har vi räknat:  <br>
                             Din hemadress: @php
+                                if (!empty($home)) :
                                 echo $home['postcode'] .' '. $home['city'];
+                                endif;
                             @endphp <br>
                             Din jobbadress: @php
+                                if(!empty($work)) :
                                 echo $work['postcode'] .' '. $work['city'];
+                                endif;
                             @endphp  <br>
                             Avståndet mellan ditt hem och ditt jobb = @php
                               echo  $distance;
