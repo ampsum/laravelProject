@@ -28,4 +28,4 @@ Route::resource('events','eventsController');
 Route::get('/blog', 'Blogcontroller@index');
 Route::post('/blog', 'Blogcontroller@store');
 
-Route::get('/blog/create', 'Blogcontroller@create');
+Route::post('/blog/create', 'Blogcontroller@create');

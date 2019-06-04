@@ -34,9 +34,17 @@ class eventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+           events::create([
+            'title' => request('title'),
+            'address' => request('address'),
+            'date' => request('date'),
+            'cover' => request('cover'),
+            'lat' => request('lat'),
+            'long' => request('long')
+         ]);
+         return redirect('/events');
     }
 
     /**
