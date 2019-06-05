@@ -33,3 +33,7 @@ Route::post('/blog', 'Blogcontroller@store');
 Route::get('/blog/{post}/edit', 'Blogcontroller@edit'); //
 Route::patch('/blog/{post}', 'Blogcontroller@update'); //
 Route::delete('/blog/{post}', 'Blogcontroller@destroy'); //
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

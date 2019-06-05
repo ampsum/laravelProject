@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <form action="/events/{{$event->id}}" method="POST" enctype="multipart/form-data">

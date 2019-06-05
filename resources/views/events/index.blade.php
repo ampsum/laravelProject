@@ -1,17 +1,21 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <ul>
+    <ul class="events-menu">
         @foreach ($events as $event)
-            <li>
+            <li class="event-item">
                 <a href="/events/{{$event->id}}">
-                    @php
+                    <div class="event-img">
+                        @php
                         if($event->cover !== 'empty') :  @endphp
                                 <img src="{{asset('/images') . '/' . $event->cover}}" alt="">
-                    @php endif; @endphp
-                    <h3>{{$event->title}}</h3>
-                    <p>Adress: {{$event->address}}</p>
-                    <p>Datum: {{$event->date}}</p>
+                        @php endif; @endphp
+                    </div>
+                    <div class="event-text">
+                        <h3>{{$event->title}}</h3>
+                        <p>Adress: {{$event->address}}</p>
+                        <p>Datum: {{$event->date}}</p>
+                    </div>
                 </a>
             </li>
         @endforeach
