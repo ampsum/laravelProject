@@ -52,7 +52,7 @@
         </div>
         <div class="row">
             <div class="col-md-9 counter-div">
-                <form action="/counter" method="POST">
+                <form action="/counter" method="POST" id="counter">
                     {{csrf_field()}}
                     <input type="hidden" name="counter-set" value="1">
                     <div class="row">
@@ -90,7 +90,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <input id="count" type="submit" value="Räkna">
+                            <input id="count" type="submit" value="Beräkna">
                         </div>
                     </div>
                 </form>
@@ -118,7 +118,8 @@
                             @endphp<br>
                             Ditt valda transportmedels utsläpp per km = @php
                                 echo $transport;
-                            @endphp <br>
+                            @endphp <br> <br>
+                             
                         </div>
                     </div>
                 </div>
