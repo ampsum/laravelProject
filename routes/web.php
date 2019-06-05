@@ -25,14 +25,8 @@ Route::post('/counter', function () {
 
 Route::resource('events','eventsController');
 
-Route::resource('posts', 'Postscontroller');
+Route::resource('posts', 'Postscontroller')->middleware('auth');
 Route::post('/posts/create', 'Postscontroller@create');
-/*Route::get('/posts', 'Postscontroller@index');
-Route::get('/posts/{post}', 'Postscontroller@show'); //
-Route::post('/posts', 'Postscontroller@store');
-Route::get('/posts/{post}/edit', 'Postscontroller@edit'); //
-Route::patch('/posts/{post}', 'Postscontroller@update'); //
-Route::delete('/posts/{post}', 'Postscontroller@destroy'); //*/
 
 Auth::routes();
 

@@ -32,6 +32,11 @@ class Postscontroller extends Controller
             'userName' => 'Anna'
         ]);*/
 
+        request()->validate([
+           'title' => ['required', 'min:3'],
+           'content' => ['required', 'min:3']
+        ]);
+
         $post = new Post();
         $post->title = request('title');
         $post->content = request('content');
@@ -50,7 +55,12 @@ class Postscontroller extends Controller
 
     public function update (Post $post){
         if(request(['title'])){
-            $post->update(request(['title', 'content']));
+            $validated = request()->validate([
+                'title' => ['required', 'min:3'],
+                'content' => ['required', 'min:3']
+            ]);
+
+            $post->update($validated);
             return redirect('/posts');
         }
         else {
@@ -58,7 +68,6 @@ class Postscontroller extends Controller
             $post->save();
             return view('/posts/show', ['post' => $post]);
         }
-
     }
 
     public function destroy (Post $post){

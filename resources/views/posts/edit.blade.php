@@ -12,6 +12,14 @@
         <input type="text" placeholder="Titel" name="title" value="{{ $post->title }}">
         <textarea placeholder="Innehåll" name="content">  {{ $post->content }}</textarea>
         <button type="submit">Uppdatera</button>
+
+        @if($errors->any())
+            <div>
+                @foreach($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+            </div>
+        @endif
     </form>
     <form action="/posts/{{$post->id}}" method="POST">
         @method('DELETE')
