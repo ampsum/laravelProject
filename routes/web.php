@@ -25,14 +25,14 @@ Route::post('/counter', function () {
 
 Route::resource('events','eventsController');
 
-//Route::resource('blog', 'Blogcontroller');
-Route::get('/blog', 'Blogcontroller@index');
-Route::post('/blog/create', 'Blogcontroller@create');
-Route::get('/blog/{post}', 'Blogcontroller@show'); //
-Route::post('/blog', 'Blogcontroller@store');
-Route::get('/blog/{post}/edit', 'Blogcontroller@edit'); //
-Route::patch('/blog/{post}', 'Blogcontroller@update'); //
-Route::delete('/blog/{post}', 'Blogcontroller@destroy'); //
+Route::resource('posts', 'Postscontroller');
+Route::post('/posts/create', 'Postscontroller@create');
+/*Route::get('/posts', 'Postscontroller@index');
+Route::get('/posts/{post}', 'Postscontroller@show'); //
+Route::post('/posts', 'Postscontroller@store');
+Route::get('/posts/{post}/edit', 'Postscontroller@edit'); //
+Route::patch('/posts/{post}', 'Postscontroller@update'); //
+Route::delete('/posts/{post}', 'Postscontroller@destroy'); //*/
 
 Auth::routes();
 

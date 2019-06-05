@@ -12,7 +12,7 @@
             {{$post->content}}
         </p>
 
-        <form action="/blog/{{$post->id}}" method="POST">
+        <form action="/posts/{{$post->id}}" method="POST">
             @method('PATCH')
             @csrf
             <p><button type="submit">Gilla</button> {{$post->likes}}</p>
@@ -21,7 +21,7 @@
         <p>Av: {{$post->userName}}</p>
 
     <p>
-        <a href="/blog/{{$post->id}}/edit">Ändra</a>
+        <a href="/posts/{{$post->id}}/edit">Ändra</a>
     </p>
 
 

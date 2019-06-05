@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <form action="/blog/create" method="POST">
+    <form action="/posts/create" method="POST">
     @csrf
     <button type="submit">Skapa nytt inlägg</button>
     </form>
@@ -27,7 +27,7 @@
     <ul>
     @foreach ($posts as $post)
         <li>
-            <a href="/blog/{{$post->id}}">
+            <a href="/posts/{{$post->id}}">
             <h2>{{$post->title}}</h2>
             </a>
         </li>

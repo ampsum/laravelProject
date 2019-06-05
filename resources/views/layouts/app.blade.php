@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Hem</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog">Bloggen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/posts">Bloggen</a></li>
                     <li class="nav-item"><a class="nav-link" href="/events">Evenemang</a></li>
                     <li class="nav-item"><a class="nav-link" href="/counter">Räkna utsläpp</a></li>
                 </ul>

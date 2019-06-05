@@ -7,7 +7,7 @@
 @section('content')
 
 
-    <form action="/blog" method="POST">
+    <form action="/posts" method="POST">
         @csrf
         <input type="text" placeholder="Titel" name="title">
         <textarea placeholder="Innehåll" name="content"></textarea>
