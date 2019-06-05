@@ -36,6 +36,20 @@ class eventsController extends Controller
      */
     public function store(Request $request)
     {
+        // Gets lat & long for the given address 
+        $address = request('address');
+        $lat = '';
+        $long = '';
+        if($address) {
+            $uri = 'https://geocoder.api.here.com/6.2/geocode.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&searchtext='.urlencode($address);
+            $json = file_get_contents($uri);
+            $arr = json_decode($json, true);
+            if(!empty($arr['Response']['View'])) {
+                $lat = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude'];
+                $long = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
+            }
+        }
+
         if($cover = $request->file('cover')) {
             $name = $cover->getClientOriginalName();
             if($cover->move('images', $name)) {
@@ -45,8 +59,8 @@ class eventsController extends Controller
                     'date' => request('date'),
                     'cover' => $name,
                     'content' => request('content'),
-                    'lat' => 1,
-                    'long' => 2,
+                    'lat' => $lat,
+                    'long' => $long,
                 ]);
             } else {
                 events::create([
@@ -55,8 +69,8 @@ class eventsController extends Controller
                     'date' => request('date'),
                     'cover' => 'empty',
                     'content' => request('content'),
-                    'lat' => 1,
-                    'long' => 2,
+                    'lat' => $lat,
+                    'long' => $long,
                 ]);
             }
         } else {
@@ -66,8 +80,8 @@ class eventsController extends Controller
                     'date' => request('date'),
                     'cover' => 'empty',
                     'content' => request('content'),
-                    'lat' => 1,
-                    'long' => 2,
+                    'lat' => $lat,
+                    'long' => $long,
                 ]);
         };
         
@@ -107,6 +121,18 @@ class eventsController extends Controller
      */
     public function update($id, Request $request)
     {   
+        $address = request('address');
+        $lat = '';
+        $long = '';
+        if($address) {
+            $uri = 'https://geocoder.api.here.com/6.2/geocode.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&searchtext='.urlencode($address);
+            $json = file_get_contents($uri);
+            $arr = json_decode($json, true);
+            if(!empty($arr['Response']['View'])) {
+                $lat = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude'];
+                $long = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
+            }
+        }
         $event = events::findOrFail($id);
         if($cover = $request->file('cover')) {
             $name = $cover->getClientOriginalName();
@@ -116,8 +142,8 @@ class eventsController extends Controller
                 $event->date = request('date');
                 $event->cover =  $name;
                 $event->content =   request('content');
-                $event->lat  =  1;
-                $event->long = 2;
+                $event->lat  =  $lat;
+                $event->long = $long;
                 $event->save();
             } else {
                 $event->title = request('title');
@@ -125,8 +151,8 @@ class eventsController extends Controller
                 $event->date = request('date');
                 $event->cover =  'empty';
                 $event->content =   request('content');
-                $event->lat  =  1;
-                $event->long = 2;
+                $event->lat  =  $lat;
+                $event->long = $long;
                 $event->save();
             }
         } else {
@@ -135,8 +161,8 @@ class eventsController extends Controller
                 $event->date = request('date');
                 $event->cover =  'empty';
                 $event->content =   request('content');
-                $event->lat  =  1;
-                $event->long = 2;
+                $event->lat  =  $lat;
+                $event->long = $long;
                 $event->save();
         }
          return redirect('/events');

@@ -4,4 +4,8 @@ $(document).ready(function () {
     $('#navbarDropdown').click(()=> {
         $('#dropdown-menu').toggle();
     })
+
+    $('#counter').submit((e) => {
+        $('.result').toggle();
+    })
 });
