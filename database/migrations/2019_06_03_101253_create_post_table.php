@@ -19,7 +19,7 @@ class CreatePostTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('likes');
-            $table->integer('userId');
+            $table->integer('user_id');
             $table->string('userName');
         });
     }

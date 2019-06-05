@@ -12,7 +12,12 @@
             {{$post->content}}
         </p>
 
-        <p><button>Gilla</button> {{$post->likes}}</p>
+        <form action="/blog/{{$post->id}}" method="POST">
+            @method('PATCH')
+            @csrf
+            <p><button type="submit">Gilla</button> {{$post->likes}}</p>
+        </form>
+
         <p>Av: {{$post->userName}}</p>
 
     <p>

@@ -27,14 +27,16 @@ class Blogcontroller extends Controller
 /*        Post::create([
            'title' => request('title'),
            'content' => request('content'),
+            'likes' => 0,
+            'user_id' => 1,
+            'userName' => 'Anna'
         ]);*/
 
         $post = new Post();
         $post->title = request('title');
         $post->content = request('content');
-
         $post->likes = 0;
-        $post->userId = 1; //session id
+        $post->user_id = 1; //session id
         $post->userName = 'Sara'; //session name
 
         $post->save();
@@ -45,15 +47,20 @@ class Blogcontroller extends Controller
     public function edit (Post $post){
         return view('blog/edit', ['post' => $post]);
     }
+
     public function update (Post $post){
+        if(request(['title'])){
+            $post->update(request(['title', 'content']));
+            return redirect('/blog');
+        }
+        else {
+            $post->likes = $post->likes + 1;
+            $post->save();
+            return view('/blog/show', ['post' => $post]);
+        }
 
-        $post->title = request('title');
-        $post->content = request('content');
-
-        $post->save();
-
-        return redirect('/blog');
     }
+
     public function destroy (Post $post){
         $post->delete();
         return redirect('/blog');
