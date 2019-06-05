@@ -16,6 +16,19 @@
                     @endif
 
                     You are logged in!
+
+                        @if($posts->count(1))
+                            <h2>Mina inlägg</h2>
+                            @foreach ($posts as $post)
+                                <li>
+                                    <a href="/posts/{{$post->id}}">
+                                        <h2>{{$post->title}}</h2>
+                                    </a>
+                                    <p>Gilla {{$post->likes}}</p>
+                                </li>
+                            @endforeach
+                        @endif
+
                 </div>
             </div>
         </div>

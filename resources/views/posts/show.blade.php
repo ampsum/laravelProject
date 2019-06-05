@@ -20,9 +20,11 @@
 
         <p>Av: {{$post->userName}}</p>
 
+    @if($post->user_id == $id)
     <p>
         <a href="/posts/{{$post->id}}/edit">Ändra</a>
     </p>
+    @endif
 
 
 

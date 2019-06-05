@@ -10,13 +10,13 @@ class Postscontroller extends Controller
 {
     public function index (){
         $posts = Post::all();
-        //$posts = User::find(1)->posts;
 
         return view('posts/index', ['posts' => $posts]);
     }
 
     public function show (Post $post){
-        return view('posts/show', ['post' => $post]);
+        $id = auth()->user()->id ;
+        return view('posts/show', ['id'=> $id, 'post' => $post]);
     }
 
     public function create (){
@@ -41,8 +41,8 @@ class Postscontroller extends Controller
         $post->title = request('title');
         $post->content = request('content');
         $post->likes = 0;
-        $post->user_id = 1; //session id
-        $post->userName = 'Sara'; //session name
+        $post->user_id = auth()->user()->id;
+        $post->userName = auth()->user()->name;
 
         $post->save();
 
@@ -50,7 +50,12 @@ class Postscontroller extends Controller
     }
 
     public function edit (Post $post){
-        return view('posts/edit', ['post' => $post]);
+        if ($post->user_id == auth()->user()->id) {
+            return view('posts/edit', ['post' => $post]);
+        }
+        else{
+            return redirect('/posts');
+        }
     }
 
     public function update (Post $post){
@@ -59,7 +64,6 @@ class Postscontroller extends Controller
                 'title' => ['required', 'min:3'],
                 'content' => ['required', 'min:3']
             ]);
-
             $post->update($validated);
             return redirect('/posts');
         }
