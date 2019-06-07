@@ -26,6 +26,4 @@
     </p>
     @endif
 
-
-
 @endsection
