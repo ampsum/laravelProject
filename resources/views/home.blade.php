@@ -24,7 +24,7 @@
                                     <a href="/posts/{{$post->id}}">
                                         <h2>{{$post->title}}</h2>
                                     </a>
-                                    <p>Gilla {{$post->likes}}</p>
+                                    <p>Gilla {{$post->likes}} Kommentarer {{$post->comments}}</p>
                                 </li>
                             @endforeach
                         @endif

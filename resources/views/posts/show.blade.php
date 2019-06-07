@@ -6,21 +6,21 @@
 
 @section('content')
 
+    <p>{{$post->created_at->format('Y-m-d H:i')}}</p>
+    <p>
+        {{$post->content}}
+    </p>
 
-        <p>{{$post->created_at->format('Y-m-d H:i')}}</p>
-        <p>
-            {{$post->content}}
-        </p>
+    <form action="/posts/{{$post->id}}" method="POST">
+        @method('PATCH')
+        @csrf
+        <p><button type="submit" name="like">Gilla</button> {{$post->likes}}</p>
+        <p><button type="submit" name="comment">Kommentera</button> {{$post->comments}}</p>
+    </form>
 
-        <form action="/posts/{{$post->id}}" method="POST">
-            @method('PATCH')
-            @csrf
-            <p><button type="submit">Gilla</button> {{$post->likes}}</p>
-        </form>
+    <p>Av: {{$post->userName}}</p>
 
-        <p>Av: {{$post->userName}}</p>
-
-    @if($post->user_id == $id)
+    @if(isset($id) && $post->user_id == $id)
     <p>
         <a href="/posts/{{$post->id}}/edit">Ändra</a>
     </p>

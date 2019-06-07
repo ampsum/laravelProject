@@ -44,6 +44,9 @@
                             </a>
 
                             <div id="dropdown-menu" class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                    Min profil
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">

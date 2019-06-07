@@ -41,6 +41,7 @@ class Postscontroller extends Controller
         $post->title = request('title');
         $post->content = request('content');
         $post->likes = 0;
+        $post->comments = 0;
         $post->user_id = auth()->user()->id;
         $post->userName = auth()->user()->name;
 
@@ -67,8 +68,13 @@ class Postscontroller extends Controller
             $post->update($validated);
             return redirect('/posts');
         }
-        else {
+        elseif (request(['like'])){
             $post->likes = $post->likes + 1;
+            $post->save();
+            return view('/posts/show', ['post' => $post]);
+        }
+        elseif (request(['comment'])){
+            $post->comments = $post->comments + 1;
             $post->save();
             return view('/posts/show', ['post' => $post]);
         }
