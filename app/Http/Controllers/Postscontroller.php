@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class Postscontroller extends Controller
 {
+    private $hasliked = false;
+
     public function index (){
         $posts = Post::all();
 
@@ -60,6 +62,7 @@ class Postscontroller extends Controller
     }
 
     public function update (Post $post){
+
         if(request(['title'])){
             $validated = request()->validate([
                 'title' => ['required', 'min:3'],
@@ -69,9 +72,16 @@ class Postscontroller extends Controller
             return redirect('/posts');
         }
         elseif (request(['like'])){
-            $post->likes = $post->likes + 1;
-            $post->save();
-            return view('/posts/show', ['post' => $post]);
+            if($this->hasliked == true){
+
+                return view('/posts/show', ['post' => $post]);
+            }
+            else{
+                $post->likes = $post->likes + 1;
+                $post->save();
+                $this->hasliked = true;
+                return view('/posts/show', ['post' => $post]);
+            }
         }
         elseif (request(['comment'])){
             $post->comments = $post->comments + 1;
