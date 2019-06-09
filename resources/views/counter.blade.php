@@ -26,7 +26,7 @@
                 $workLong = $workArray['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
             } else {$wrong = 'du har angett en felaktig jobbadress!'; }
           }
-        //counts the distance between the customer & the work
+        //counts the distance between home &  work
           if(!empty($work) && !empty($home) && !empty($homeLat) && !empty($homeLong) && !empty($workLat) && !empty($workLong)) {
             $route = 'https://route.api.here.com/routing/7.2/calculateroute.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&waypoint0='.$workLat. ','. $workLong . '&waypoint1='. $homeLat .',' . $homeLong .'&mode=fastest;car;traffic:disabled';
             $routeJson = file_get_contents($route);

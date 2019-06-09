@@ -23,7 +23,7 @@ Route::post('/counter', function () {
     return view('counter');
 });
 
-Route::resource('events','eventsController');
+Route::resource('events','eventsController')->middleware('auth');
 
 Route::resource('posts', 'Postscontroller')->middleware('auth');
 Route::post('/posts/create', 'Postscontroller@create');

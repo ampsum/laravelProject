@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\events;
+use App\User;
 use Illuminate\Http\Request;
 
 class eventsController extends Controller
@@ -14,8 +15,10 @@ class eventsController extends Controller
      */
     public function index()
     {
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
         $events = events::all();
-        return view('events.index', compact('events'));
+        return view('events.index', ['events' => $events, 'user' => $user]);
     }
 
     /**
