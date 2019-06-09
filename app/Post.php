@@ -16,6 +16,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Maija
     public function comments(){
         return $this->hasMany(Comment::class);
     }

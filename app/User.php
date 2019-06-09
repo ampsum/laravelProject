@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post');
     }
+
+    // Maija
+    public function comments(){       // ok att denna är samma som på post.php?
+        return $this->hasMany('App\Comment');
+    }
 }
