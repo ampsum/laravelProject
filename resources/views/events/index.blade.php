@@ -53,10 +53,11 @@
                     $distanceKM = $routeArray['response']['route'][0]['summary']['distance'];
                     $distanceFloat = number_format($distanceKM);
                     $distance = round($distanceFloat, 0, PHP_ROUND_HALF_ODD);
-                } else {echo 'Inga evenemang i närheten av dig..';}   
+                }  
             } 
         @endphp
         @php
+        // Gets nearby events, within 30km
             if(!empty($distance) && $distance < 30) :
         @endphp
         <li class="event-item">
