@@ -16,12 +16,11 @@
                         <h2>Mina uppgifter</h2>
                         @foreach ($users as $user)
                             <p>Namn: {{$user->name}}</p>
+                            <p>Adress: {{$user->address}}</p>
                             <p>Email: {{$user->email}}</p>
-
                         @endforeach
-
                             <p>
-                                <a href="/user/{{$user->id}}/edit">Ändra</a>
+                                <a href="/home/{{$user->id}}/edit">Ändra</a>
                             </p>
 
                         @if($posts->count(1))
