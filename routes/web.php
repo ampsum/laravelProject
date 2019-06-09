@@ -31,3 +31,7 @@ Route::post('/posts/create', 'Postscontroller@create');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/comments', 'CommentsController@index');
+Route::get('/comments/create', 'CommentsController@create');  // för att visa create-sidan
+Route::post('/comments', 'CommentsController@store');   // för att posta från create-sidans formulär
