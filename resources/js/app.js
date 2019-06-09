@@ -29,4 +29,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+        show: true
+    },
+    methods: {
+        likeClick (){
+            this.show = false
+        }
+
+    }
 });
+
+/*let button = document.getElementById("likebutton");
+button.addEventListener("click", "buttonClick");
+
+function buttonClick(){
+    button.setAttribute('disabled', 'true');
+}*/

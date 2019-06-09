@@ -23,7 +23,7 @@ Route::post('/counter', function () {
     return view('counter');
 });
 
-Route::resource('events','eventsController');
+Route::resource('events','eventsController')->middleware('auth');
 
 Route::resource('posts', 'Postscontroller')->middleware('auth');
 Route::post('/posts/create', 'Postscontroller@create');
@@ -35,3 +35,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/comments', 'CommentsController@index');
 Route::get('/comments/create', 'CommentsController@create');  // för att visa create-sidan
 Route::post('/comments', 'CommentsController@store');   // för att posta från create-sidans formulär
+
+Route::get('/home', 'HomeController@show')->name('home');
+Route::get('/home/{user}/edit', 'HomeController@edit');
+Route::patch('/home/{user}', 'HomeController@update');
+Route::delete('/home/{user}', 'HomeController@destroy');

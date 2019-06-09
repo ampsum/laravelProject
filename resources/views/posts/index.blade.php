@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Blogg
+    Diskussionsforum
 @endsection
 
 @section('content')
