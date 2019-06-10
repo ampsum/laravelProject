@@ -2,35 +2,30 @@
 
 namespace App\Http\Controllers;
 use \App\Comment;
+use \App\User;
+use \App\Post;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function index()      // GET
-    {
+    public function index() {
       $comments = Comment::all();
-
       return view('comments.index', ['comments' => $comments]);
     }
 
-    public function create()		 // get för att visa create-sidan
-    {
+    public function create()	{
     	$comments = Comment::all();
     	return view('comments.create', ['comments' => $comments]);
     }
 
-    public function store()			 // för att posta från create-sidans formulär
-    {
+    public function store()	{
     	$comment = new Comment();
     	$comment->content = request('content');
-    	$comment->userName = request('userName');
-    	$comment->user_id = request('user_id');
-    	$comment->post_id = request('post_id');	
-
+    	$comment->userName = auth()->user()->name;
+      $comment->user_id = auth()->user()->id;
+      $comment->post_id = request('post');;
     	$comment->save();
-
-    	return redirect('/comments');			// redirectar användaren till CommentsController@index
-
+    	return back();			
     }
 
 }
