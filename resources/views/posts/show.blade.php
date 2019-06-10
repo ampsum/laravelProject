@@ -21,7 +21,7 @@
         @method('PATCH')
         @csrf
         <p><button type="submit" name="like">Gilla</button> {{$post->likes}}</p>
-        <p><button type="submit" name="comment">Kommentera</button> {{$post->comments}}</p>
+        <!-- <p><button type="submit" name="comment">Kommentera</button> {{$post->comments}}</p> -->
     </form>
 </div>
 
@@ -32,5 +32,17 @@
         <a href="/posts/{{$post->id}}/edit">Ändra</a>
     </p>
     @endif
+
+    <form method="POST" action="/comments">
+    {{csrf_field()}}
+    <input type="hidden" name="post" value="{{$post->id}}">
+    <!-- <input type="text" placeholder="User Name" name="userName"> -->
+    <input type="text" placeholder="Content" name="content">
+    <button type="submit">Kommentera</button>
+
+@foreach ($post->comments as $comment)
+    <dt>{{ $comment->userName }}</dt>
+    <dd>{{ $comment->content }}</dd>
+@endforeach
 
 @endsection

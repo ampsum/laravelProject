@@ -43,7 +43,6 @@ class Postscontroller extends Controller
         $post->title = request('title');
         $post->content = request('content');
         $post->likes = 0;
-        $post->comments = 0;
         $post->user_id = auth()->user()->id;
         $post->userName = auth()->user()->name;
 
