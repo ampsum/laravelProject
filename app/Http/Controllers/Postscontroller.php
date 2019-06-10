@@ -43,6 +43,7 @@ class Postscontroller extends Controller
         $post->title = request('title');
         $post->content = request('content');
         $post->likes = 0;
+        $post->commentCount = 0;
         $post->user_id = auth()->user()->id;
         $post->userName = auth()->user()->name;
 
@@ -82,11 +83,11 @@ class Postscontroller extends Controller
                 return view('/posts/show', ['post' => $post]);
             }
         }
-        elseif (request(['comment'])){
-            $post->comments = $post->comments + 1;
+/*        elseif (request(['comment'])){
+            $post->commentCount = $post->commentCount + 1;
             $post->save();
             return view('/posts/show', ['post' => $post]);
-        }
+        }*/
     }
 
     public function destroy (Post $post){

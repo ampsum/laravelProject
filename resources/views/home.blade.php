@@ -30,12 +30,17 @@
                                     <a href="/posts/{{$post->id}}">
                                         <h2>{{$post->title}}</h2>
                                     </a>
-                                    <p>Gilla {{$post->likes}} Kommentarer {{$post->comments}}</p>
+                                    <p>Gilla {{$post->likes}} Kommentarer {{$post->commentCount}}</p>
                                 </li>
+                                @foreach ($post->comments as $comment)
+                                    <dt>{{ $comment->userName }}</dt>
+                                    <dd>{{ $comment->content }}</dd>
+                                @endforeach
+
                             @endforeach
+
                         @endif
 
-                        <h2>Nya kommentarer</h2>
 
                     </div>
                 </div>

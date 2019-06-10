@@ -21,7 +21,6 @@
         @method('PATCH')
         @csrf
         <p><button type="submit" name="like">Gilla</button> {{$post->likes}}</p>
-        <!-- <p><button type="submit" name="comment">Kommentera</button> {{$post->comments}}</p> -->
     </form>
 </div>
 

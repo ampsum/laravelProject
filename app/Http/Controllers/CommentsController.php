@@ -6,6 +6,7 @@ use \App\User;
 use \App\Post;
 use Illuminate\Http\Request;
 
+
 class CommentsController extends Controller
 {
     public function index() {
@@ -22,9 +23,13 @@ class CommentsController extends Controller
     	$comment = new Comment();
     	$comment->content = request('content');
     	$comment->userName = auth()->user()->name;
-      $comment->user_id = auth()->user()->id;
-      $comment->post_id = request('post');;
+        $comment->user_id = auth()->user()->id;
+        $comment->post_id = request('post');
     	$comment->save();
+
+        $post = request('post');
+        $post->commentCount = $post->commentCount + 1;
+        $post->save();
     	return back();			
     }
 
