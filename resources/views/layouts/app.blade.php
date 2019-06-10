@@ -64,7 +64,6 @@
             </div>
         </nav>
     </header>
-    <h1> @yield('title')</h1>
 
     <div id="wrap">
         @yield('hero')

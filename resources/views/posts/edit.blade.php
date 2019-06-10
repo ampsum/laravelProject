@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    Uppdatera
+    Uppdatera inlägg
 @endsection
 
 @section('content')
+    <div class="container top-container"></div>
     <h2 class="form-h2">Redigera {{$post->title}}</h2>
 
     <form action="/posts/{{$post->id}}" method="POST">
@@ -43,6 +44,7 @@
             </div>
         </div>
     </form>
+    </div>
 
 
 

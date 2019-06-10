@@ -42,6 +42,9 @@
 
 
 @extends('layouts.app')
+@section('title')
+    Räkna utsläpp
+@endsection
 @section('hero')
     <section class="container-fluid hero-small counter" style="background-image:url(../images/count.jpg)">
         <div class="row">
