@@ -5,8 +5,8 @@ $(document).ready(function () {
         $('#dropdown-menu').toggle();
     })
 
-    $('#counter').submit((e) => {
-        $('.result').toggle();
+    $('#counter').submit(() => {
+        $('.result').scrollIntoView();
     })
 
     $('.navbar-toggler-icon').click(function() {

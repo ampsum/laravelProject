@@ -46,7 +46,7 @@
     Räkna utsläpp
 @endsection
 @section('hero')
-    <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
+    <section class="container-fluid hero-small counter" style="background-image:url(../images/count.jpg)">
         <div class="row">
             <div class="col-md-12">
                 <h2>Räkna ditt utsläpp!</h2>
@@ -106,9 +106,10 @@
                 <div class="result">
                     <div class="row">
                         <div class="col-md-12" id="show">
-                            Ditt utsläpp: @php
-                                echo 'ca ' . $distance*$transport . ' COg';
+                            Ditt utsläpp: ca <span class="warning"> @php
+                                echo  $distance*$transport . ' COg';
                             @endphp
+                            </span>
                              <hr>
                             <strong>Så här har vi räknat &#8628;</strong> <br>
                             Din hemadress: @php
