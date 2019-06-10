@@ -1,5 +1,13 @@
 @extends('layouts.app')
-
+@section('hero')
+    <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Evenemang</h2>
+            </div>
+        </div>
+    </section>
+@endsection
 @section('content')
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
