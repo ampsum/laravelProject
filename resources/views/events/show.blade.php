@@ -9,16 +9,16 @@
     <!-- </section> -->
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container text-center">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col">
                 <div class="event">
                   <h2>Evenemang: {{$event->title}}</h2>
                     @php
                         if($event->cover !== 'empty') :  @endphp
-                             <img src="{{asset('/images') . '/' . $event->cover}}" alt="">
+                             <img src="{{asset('/images') . '/' . $event->cover}}" alt="" style="margin-bottom:10px;">
                     @php endif; @endphp
-                    <h3>{{$event->title}}</h3>
+                    <!-- <h3>{{$event->title}}</h3> -->
                     <p>Adress: {{$event->address}}</p>
                     <p>Datum: {{$event->date}}</p>
                     <p>{{$event->content}}</p>

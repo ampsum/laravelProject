@@ -5,13 +5,26 @@
 @endsection
 
 @section('content')
+    <h2 class="form-h2">Redigera {{$post->title}}</h2>
 
     <form action="/posts/{{$post->id}}" method="POST">
         @method('PATCH')
         @csrf
-        <input type="text" placeholder="Titel" name="title" value="{{ $post->title }}">
-        <textarea placeholder="Innehåll" name="content">  {{ $post->content }}</textarea>
-        <button type="submit">Uppdatera</button>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <input class="form-control" type="text" name="title" placeholder="Title" value="{{$post->title}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <textarea id="content" class="form-control" name="content" cols="30" rows="10">{{$post->content}}</textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <input class="btn btn-primary" type="submit" name="submit" value="Uppdatera inlägg">
+            </div>
+        </div>
 
         @if($errors->any())
             <div>
@@ -24,7 +37,11 @@
     <form action="/posts/{{$post->id}}" method="POST">
         @method('DELETE')
         @csrf
-        <button type="submit">Radera</button>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <input class="btn btn-primary" type="submit" name="submit" value="Radera inlägg">
+            </div>
+        </div>
     </form>
 
 

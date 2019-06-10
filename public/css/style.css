@@ -276,7 +276,7 @@ section.hero {
     font-weight: 600;
     /* font-family: cursive; */
     text-align: center;
-    text-shadow: -1px 4px #111;
+    text-shadow: -1px 4px 4px #222;
 }
 
 
