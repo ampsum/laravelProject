@@ -1,5 +1,13 @@
 @extends('layouts.app')
-
+@section('hero')
+    <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Lägg till evenemang</h2>
+            </div>
+        </div>
+    </section>
+@endsection
 @section('content')
 <h2 class="form-h2">Lägg till ett nytt evenemang</h2>
     <form action="/events" method="POST" enctype="multipart/form-data">

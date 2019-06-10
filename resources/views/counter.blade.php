@@ -104,7 +104,7 @@
                     <div class="row">
                         <div class="col-md-12" id="show">
                             Ditt utsläpp: @php
-                                echo 'ca ' . $distance*$transport . ' CO g/km';
+                                echo 'ca ' . $distance*$transport . ' COg';
                             @endphp
                              <hr>
                             <strong>Så här har vi räknat &#8628;</strong> <br>
