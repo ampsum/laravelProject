@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Uppdatera
+    Uppdatera inlägg
 @endsection
 
 @section('content')

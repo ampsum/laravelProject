@@ -238,6 +238,10 @@ section.hero {
     margin: 0;
 }
 
+li {
+    list-style: none;
+}
+
 /* Hero-small */
 
 .hero-small {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use \App\User;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
@@ -38,10 +39,11 @@ class HomeController extends Controller
     }
 
     public function update(User $user){
+
         $validated = request()->validate([
             'name' => ['required', 'min:3'],
             'adress' => ['required', 'min:3'],
-            'email' => ['required', 'min:3']
+            'email' => ['required', 'min:3'],
         ]);
         $user->update($validated);
         return redirect('/home');
