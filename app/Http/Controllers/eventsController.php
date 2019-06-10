@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\events;
 use App\User;
+use \App\Post;
 use Illuminate\Http\Request;
 
 class eventsController extends Controller

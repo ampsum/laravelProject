@@ -86,7 +86,23 @@
                     </div>
                     <div class="col-md-4">
                         <h3>Senaste inlägg</h3>
-                        <ul></ul>
+                        <ul>
+                            {{-- Get latest 5 posts --}}
+                            @php
+                                $posts = App\post::all();
+                                $i=0;
+                            @endphp
+                               @foreach ($posts as $post) 
+                                @php
+                                    $i++;
+                                    if($i < 6) : 
+                                @endphp
+                                <li><a href="/posts/{{$post->id}}">{{$post->title}}</a></li>
+                                 @php
+                                    endif;
+                                @endphp 
+                                @endforeach        
+                        </ul>
                     </div>
                     <div class="col-md-4 social">
                         <h3>Hjälp oss att bli större!</h3>
