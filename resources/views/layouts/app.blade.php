@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/responsive.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -69,6 +70,53 @@
         @yield('hero')
         @yield('content')
     </div>
+    <div class="container-fluid divider"></div>
+    <footer class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Meny</h3>
+                        <ul>
+                            <li class="nav-item"><a class="nav-link" href="/">Hem</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/posts">Diskussionsforum</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/events">Evenemang</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/counter">Räkna utsläpp</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Senaste inlägg</h3>
+                        <ul></ul>
+                    </div>
+                    <div class="col-md-4 social">
+                        <h3>Hjälp oss att bli större!</h3>
+                        <ul>
+                            <li>
+                                <a href="#" class="fa fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-youtube"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-snapchat-ghost"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-instagram"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 copy">
+                        <p>2019 Projekt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="{{ asset('/js/script.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>

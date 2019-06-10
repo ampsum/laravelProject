@@ -9,7 +9,8 @@
     </section>
 @endsection
 @section('content')
-<h2 class="form-h2">Lägg till ett nytt evenemang</h2>
+{{-- <h2 class="form-h2">Lägg till ett nytt evenemang</h2> --}}
+    <br><br>
     <form action="/events" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <input type="hidden" name="event-set" value="1">

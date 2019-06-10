@@ -35,8 +35,8 @@
                 $distanceKM = $routeArray['response']['route'][0]['summary']['distance'];
                 $distanceFloat = number_format($distanceKM);
                 $distance = round($distanceFloat, 0, PHP_ROUND_HALF_ODD);
-            } else {echo 'Något har gått fel! Kolla så att du har fyllt i rätt uppgifter..';}   
-          } 
+            } else {echo 'Något har gått fel! Kolla så att du har fyllt i rätt uppgifter..';}
+          }
     }
 @endphp
 
@@ -46,7 +46,7 @@
     <section class="container-fluid hero-small counter" style="background-image:url(../images/count.jpg)">
         <div class="row">
             <div class="col-md-12">
-                <h2>Räkna ditt utsläpp</h2>
+                <h2>Räkna ditt utsläpp!</h2>
             </div>
         </div>
     </section>
@@ -125,7 +125,7 @@
                             Ditt valda transportmedels utsläpp per km: @php
                                 echo $transport;
                             @endphp CO<br> <br>
-                             
+
                         </div>
                     </div>
                 </div>
