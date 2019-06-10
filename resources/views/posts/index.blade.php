@@ -22,10 +22,6 @@
         </li>
     </ul>
 
-{{--    <form action="/posts/create" method="POST">
-    @csrf
-    <button type="submit">Skapa nytt inlägg</button>
-    </form>--}}
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <ul class="posts-menu">
@@ -42,18 +38,6 @@
             </ul>
         </div>
     </div>
-
-{{--    <ul>
-    @foreach ($posts as $post)
-        <li>
-            <a href="/posts/{{$post->id}}">
-            <h2>{{$post->title}}</h2>
-            </a>
-            <p>Av: {{$post->userName}}</p>
-        </li>
-    @endforeach
-    </ul>--}}
-
 
 
 @endsection
