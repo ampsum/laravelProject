@@ -27,7 +27,7 @@ class CommentsController extends Controller
         $comment->post_id = request('post');
     	$comment->save();
 
-        $post = request('post');
+        $post = Post::find(request('post'));
         $post->commentCount = $post->commentCount + 1;
         $post->save();
     	return back();			

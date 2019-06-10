@@ -22,7 +22,6 @@
                             <p>
                                 <a href="/home/{{$user->id}}/edit">Ändra</a>
                             </p>
-
                         @if($posts->count(1))
                             <h2>Mina inlägg</h2>
                             @foreach ($posts as $post)
@@ -36,9 +35,7 @@
                                     <dt>{{ $comment->userName }}</dt>
                                     <dd>{{ $comment->content }}</dd>
                                 @endforeach
-
                             @endforeach
-
                         @endif
 
 

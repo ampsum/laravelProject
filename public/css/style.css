@@ -109,7 +109,7 @@ select {
     padding: 20px;
 }
 
-.events-menu {
+.events-menu, .posts-menu {
     margin: 0 auto;
     width: 60%;
     list-style: none;
@@ -140,6 +140,15 @@ form .row {
 .form-h2 {
     text-align: center;
     margin:1em auto !important;
+}
+
+/* Posts page */
+.post-item {
+    width: 100%;
+    height: auto;
+    margin: 1em auto;
+    text-align: center;
+    padding: 10px;
 }
 
 /* Homepage */
