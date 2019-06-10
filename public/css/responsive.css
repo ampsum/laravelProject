@@ -1,0 +1,29 @@
+@media(max-width: 600px) {
+    .hero h2 {
+        font-size: 35px;
+        margin-bottom: 1em;
+    }
+
+    .hero p {
+        font-size: 15px;
+        margin: 4em auto;
+        line-height: 1.1;
+    }
+    .centered-y {
+        transform: translateY(-50%);
+        width:75%;
+    }
+    .navbar-toggler-icon {
+        width: auto !important;
+        height: auto !important;
+        font-size: 30px;
+        color:#000;
+    }
+    form {
+        padding: 10px 20px;
+    }
+
+    section.hero {
+        height: 75vh;
+    }
+}
