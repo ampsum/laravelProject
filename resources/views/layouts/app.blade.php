@@ -14,14 +14,13 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">Navbar</a>
+        <nav class="navbar navbar-expand-lg navbar-ligt bg-light fixed-top">
+            <a class="navbar-brand" href="/">Hem</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Hem</a></li>
                     <li class="nav-item"><a class="nav-link" href="/posts">Diskussionsforum</a></li>
                     <li class="nav-item"><a class="nav-link" href="/events">Evenemang</a></li>
                     <li class="nav-item"><a class="nav-link" href="/counter">Räkna utsläpp</a></li>
@@ -66,6 +65,7 @@
     <h1> @yield('title')</h1>
 
     <div id="wrap">
+        @yield('hero')
         @yield('content')
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

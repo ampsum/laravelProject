@@ -42,14 +42,17 @@
 
 
 @extends('layouts.app')
-
-@section('content')
-    <div class="container">
+@section('hero')
+    <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
         <div class="row">
-            <div class="col-md-12 hero-small">
-                <br><br><br>
+            <div class="col-md-12">
+                <h2>Evenemang</h2>
             </div>
         </div>
+    </section>
+@endsection
+@section('content')
+    <div class="container">
         <div class="row">
             <div class="col-md-9 counter-div">
                 <form action="/counter" method="POST" id="counter">
@@ -74,7 +77,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3>Välj transportmedel</h3>
-                            <select name="transport" >
+                            <div class="select">
+                                <select name="transport" >
                                 <option value="2.94">Personbil bensin</option>
                                 <option value="0.25">Personbil diesel</option>
                                 <option value="0.24">Personbil E-85 (Etanol)</option>
@@ -86,11 +90,12 @@
                                 <option value="0">Tåg</option>
                                 <option value="0">Spårvagn</option>
                             </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <input id="count" type="submit" value="Beräkna">
+                            <input class="btn btn-primary" id="count" type="submit" value="Beräkna">
                         </div>
                     </div>
                 </form>
@@ -101,8 +106,8 @@
                             Ditt utsläpp: @php
                                 echo 'ca ' . $distance*$transport . ' CO g/km';
                             @endphp
-                             <br>
-                            Så här har vi räknat:  <br>
+                             <hr>
+                            <strong>Så här har vi räknat &#8628;</strong> <br>
                             Din hemadress: @php
                                 if (!empty($home)) :
                                 echo $home['postcode'] .' '. $home['city'];
@@ -113,12 +118,12 @@
                                 echo $work['postcode'] .' '. $work['city'];
                                 endif;
                             @endphp  <br>
-                            Avståndet mellan ditt hem och ditt jobb = @php
+                            Avståndet mellan ditt hem och ditt jobb: @php
                               echo  $distance;
-                            @endphp<br>
-                            Ditt valda transportmedels utsläpp per km = @php
+                            @endphp Km<br>
+                            Ditt valda transportmedels utsläpp per km: @php
                                 echo $transport;
-                            @endphp <br> <br>
+                            @endphp CO<br> <br>
                              
                         </div>
                     </div>
