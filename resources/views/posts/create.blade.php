@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <div class="container top-container">
     <h2 class="form-h2">Skapa ett nytt inlägg</h2>
 
     <form action="/posts" method="POST">
@@ -25,6 +26,7 @@
             </div>
         </div>
 
+
         @if($errors->any())
             <div>
                 @foreach($errors->all() as $error)
@@ -34,6 +36,7 @@
 
         @endif
     </form>
+    </div>
 
 
 @endsection

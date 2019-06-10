@@ -2,15 +2,15 @@
 Evenemang: {{$event->title}}
 @section('hero')
     <!-- <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)"> -->
-        <div class="row">
+{{--        <div class="row">
             <div class="col-md-12">
                 <h2>Evenemang: {{$event->title}}</h2>
             </div>
-        </div>
+        </div>--}}
     <!-- </section> -->
 @endsection
 @section('content')
-    <div class="container text-center">
+    <div class="container text-center top-container">
         <div class="row">
             <div class="col">
                 <div class="event">

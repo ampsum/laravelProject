@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <br>
-    <div class="container">
+    <div class="container top-container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -15,6 +15,8 @@
                             </div>
                         @endif
                         <div>
+
+
                         <h2>Mina uppgifter</h2>
                         @foreach ($users as $user)
                             <p>Namn: {{$user->name}}</p>
@@ -38,10 +40,8 @@
                                     <dt>{{ $comment->userName }}</dt>
                                     <dd>{{ $comment->content }}</dd>
                                 @endforeach
-                                    <br>
                             @endforeach
                         @endif
-                        </div>
 
 
                     </div>
