@@ -1,18 +1,19 @@
 @extends('layouts.app')
 @section('hero')
-    <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
+    <!-- <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)"> -->
         <div class="row">
             <div class="col-md-12">
                 <h2>Evenemang: {{$event->title}}</h2>
             </div>
         </div>
-    </section>
+    <!-- </section> -->
 @endsection
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="event">
+                  <h2>Evenemang: {{$event->title}}</h2>
                     @php
                         if($event->cover !== 'empty') :  @endphp
                              <img src="{{asset('/images') . '/' . $event->cover}}" alt="">

@@ -8,4 +8,8 @@ $(document).ready(function () {
     $('#counter').submit((e) => {
         $('.result').toggle();
     })
+
+    $('.navbar-toggler-icon').click(function() {
+        $('#navbarSupportedContent').fadeToggle();
+    })
 });
