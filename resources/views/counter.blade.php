@@ -42,6 +42,9 @@
 
 
 @extends('layouts.app')
+@section('title')
+    Räkna utsläpp
+@endsection
 @section('hero')
     <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
         <div class="row">

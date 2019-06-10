@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+   Evenemang
+@endsection
 @section('hero')
     <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)">
         <div class="row">

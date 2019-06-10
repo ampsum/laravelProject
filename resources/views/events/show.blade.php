@@ -1,4 +1,5 @@
 @extends('layouts.app')
+Evenemang: {{$event->title}}
 @section('hero')
     <!-- <section class="container-fluid hero-small" style="background-image:url(../images/half1.jpg)"> -->
         <div class="row">

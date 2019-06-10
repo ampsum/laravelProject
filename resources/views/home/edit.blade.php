@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Uppdatera kontouppgifter
+    Uppdatera uppgifter
 @endsection
 
 @section('content')
