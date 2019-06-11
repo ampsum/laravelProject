@@ -70,6 +70,10 @@ select {
     pointer-events: none;
 }
 
+.card {
+    margin-bottom: 50px;
+}
+
 /* Header */
 
 /* Counter page */

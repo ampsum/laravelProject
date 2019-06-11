@@ -49,7 +49,7 @@
                                     Min profil
                                 </a>
                                 @if(auth()->user()->isAdmin)
-                                <a class="dropdown-item" href="admin/routes">
+                                <a class="dropdown-item" href="/admin/routes">
                                     Adminpanelen
                                 </a>
                                 @endif
