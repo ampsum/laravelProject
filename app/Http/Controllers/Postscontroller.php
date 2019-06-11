@@ -75,7 +75,13 @@ class PostsController extends Controller
     }
 
     public function destroy (Post $post){
-        $post->delete();
-        return redirect('/posts');
+        if (auth()->user()->isAdmin){
+            $post->delete();
+            return redirect('/admin/routes');
+        }
+        else{
+            $post->delete();
+            return redirect('/posts');
+        }
     }
 }

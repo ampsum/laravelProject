@@ -24,6 +24,15 @@
                                     <a href="/posts/{{$post->id}}">
                                         <h2>{{$post->title}}</h2>
                                     </a>
+                                    <form action="/posts/{{$post->id}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <input class="btn btn-primary" type="submit" name="submit" value="Radera inlägg">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </li>
                             @endforeach
                         @endif
