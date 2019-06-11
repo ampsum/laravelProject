@@ -29,7 +29,7 @@
                                         @csrf
                                         <div class="form-group row">
                                             <div class="col-md-6">
-                                                <input class="btn btn-primary" type="submit" name="submit" value="Radera inlägg">
+                                                <input class="btn btn-primary" type="submit" name="submit" value="Ta bort">
                                             </div>
                                         </div>
                                     </form>
@@ -54,6 +54,9 @@
                               <a href="/events/{{$event->id}}">
                                   <h2>{{$event->title}}</h2>
                               </a>
+                              <div class="event-controll">
+                                  <a href="/events/{{$event->id}}/edit"><input class="btn btn-primary" type="submit" value="Redigera / Ta bort"></a>
+                              </div>
                           </li>
                           @endforeach
                         @endif

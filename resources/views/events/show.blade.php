@@ -24,9 +24,11 @@ Evenemang: {{$event->title}}
                     <p>Datum: {{$event->date}}</p>
                     <p>{{$event->content}}</p>
                 </div>
-                <div class="event-controll">
-                <a href="/events/{{$event->id}}/edit">Redigera event</a>
-                </div>
+                @if(auth()->user()->isAdmin)
+                    <div class="event-controll">
+                        <a href="/events/{{$event->id}}/edit">Redigera event</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

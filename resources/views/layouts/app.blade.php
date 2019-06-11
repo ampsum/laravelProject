@@ -48,6 +48,11 @@
                                 <a class="dropdown-item" href="{{ route('home') }}">
                                     Min profil
                                 </a>
+                                @if(auth()->user()->isAdmin)
+                                <a class="dropdown-item" href="admin/routes">
+                                    Adminpanelen
+                                </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
