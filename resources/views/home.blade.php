@@ -25,7 +25,8 @@
 
                           </div>
 
-                        <?php } else echo '<div class="panel-heading">Vanlig användare</div>';?>
+                        <?php }
+                        else echo '<div class="panel-heading">Vanlig användare</div>';?>
 
 
 
@@ -39,9 +40,9 @@
                                 <a href="/home/{{$user->id}}/edit">Ändra</a>
                             </p>
                             <br>
-                        @if($posts->count(1))
+                        @if($user->posts->count(1))
                             <h2>Mina inlägg</h2>
-                            @foreach ($posts as $post)
+                            @foreach ($user->posts as $post)
                                 <li class="">
                                     <a href="/posts/{{$post->id}}">
                                         <h2>{{$post->title}}</h2>
@@ -54,8 +55,6 @@
                                 @endforeach
                             @endforeach
                         @endif
-
-
                     </div>
                 </div>
             </div>

@@ -42,8 +42,7 @@ class HomeController extends Controller
 
     public function show(){
         $users = User::find(auth()->user());
-        $posts = User::find(auth()->user()->id)->posts;
-        return view('home', ['posts' => $posts, 'users' =>$users]);
+        return view('home', ['users' =>$users]);
     }
 
     public function edit (User $user){
