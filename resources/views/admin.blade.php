@@ -46,7 +46,17 @@
                                 </li>
                             @endforeach
                         @endif
-
+                        <br>
+                        @if($events->count(1))
+                          <h2>Alla evenemang</h2>
+                          @foreach ($events as $event)
+                          <li class="">
+                              <a href="/events/{{$event->id}}">
+                                  <h2>{{$event->title}}</h2>
+                              </a>
+                          </li>
+                          @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
