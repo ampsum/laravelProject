@@ -32,11 +32,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('/comments', 'CommentsController@index');
+Route::get('/comments', 'CommentsController@index');
 // Route::get('/comments/create', 'CommentsController@create');  // för att visa create-sidan
-Route::post('/comments', 'CommentsController@store');   // för att posta från create-sidans formulär
+Route::post('/comments', 'CommentsController@store');   // för att posta från kommentarformulär
 
 Route::get('/home', 'HomeController@show')->name('home');
 Route::get('/home/{user}/edit', 'HomeController@edit');
 Route::patch('/home/{user}', 'HomeController@update');
 Route::delete('/home/{user}', 'HomeController@destroy');
+
+Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
