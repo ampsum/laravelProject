@@ -19,9 +19,11 @@
   <li class="nav-item">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Evenemang i närheten</a>
   </li>
-  <li>
-    <a class="nav-link" href="/events/create">Skapa nytt evenemang</a>
-  </li>
+    @if(auth()->user()->isAdmin)
+        <li>
+            <a class="nav-link" href="/events/create">Skapa nytt evenemang</a>
+        </li>
+    @endif
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
