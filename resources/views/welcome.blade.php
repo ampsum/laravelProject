@@ -12,7 +12,7 @@
                         <div class="text centered-y">
                             <h2>Ta reda på ditt dagliga utsläpp</h2>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores harum maiores consequatur hic, possimus porro ab enim voluptas</p>
-                             <a class="btn btn-primary" href="/counter">Till utsälppräknaren</a>
+                             <a class="btn btn-primary" href="/counter">Till utsläppsräknaren</a>
                         </div>
                     </div>
                 </section>

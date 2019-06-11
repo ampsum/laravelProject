@@ -7,7 +7,7 @@ use App\User;
 use \App\Post;
 use Illuminate\Http\Request;
 
-class eventsController extends Controller
+class EventsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -160,7 +160,7 @@ class eventsController extends Controller
                 $event->save();
             }
         } else {
-            $event->title = request('title');
+                $event->title = request('title');
                 $event->address = request('address');
                 $event->date = request('date');
                 $event->cover =  'empty';

@@ -6,7 +6,7 @@ use \App\User;
 
 use Illuminate\Http\Request;
 
-class Postscontroller extends Controller
+class PostsController extends Controller
 {
 
 
@@ -26,14 +26,6 @@ class Postscontroller extends Controller
     }
 
     public function store (){
-/*        Post::create([
-           'title' => request('title'),
-           'content' => request('content'),
-            'likes' => 0,
-            'user_id' => 1,
-            'userName' => 'Anna'
-        ]);*/
-
         request()->validate([
            'title' => ['required', 'min:3'],
            'content' => ['required', 'min:3']
@@ -46,7 +38,6 @@ class Postscontroller extends Controller
         $post->commentCount = 0;
         $post->user_id = auth()->user()->id;
         $post->userName = auth()->user()->name;
-
         $post->save();
 
         return redirect('/posts');
@@ -83,11 +74,6 @@ class Postscontroller extends Controller
                 return view('/posts/show', ['post' => $post]);
             }
         }
-/*        elseif (request(['comment'])){
-            $post->commentCount = $post->commentCount + 1;
-            $post->save();
-            return view('/posts/show', ['post' => $post]);
-        }*/
     }
 
     public function destroy (Post $post){

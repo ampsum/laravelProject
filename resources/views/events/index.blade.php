@@ -20,7 +20,7 @@
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Evenemang i närheten</a>
   </li>
   <li>
-    <a class="nav-link" href="/events/create">Skapa en ny event</a>
+    <a class="nav-link" href="/events/create">Skapa nytt evenemang</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
