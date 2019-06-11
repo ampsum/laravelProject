@@ -23,14 +23,14 @@ class CommentsController extends Controller
     	$comment = new Comment();
     	$comment->content = request('content');
     	$comment->userName = auth()->user()->name;
-        $comment->user_id = auth()->user()->id;
-        $comment->post_id = request('post');
+      $comment->user_id = auth()->user()->id;
+      $comment->post_id = request('post');
     	$comment->save();
 
-        $post = Post::find(request('post'));
-        $post->commentCount = $post->commentCount + 1;
-        $post->save();
-    	return back();			
+      $post = Post::find(request('post'));
+      $post->commentCount = $post->commentCount + 1;
+      $post->save();
+    	return back();
     }
 
 }

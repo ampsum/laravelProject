@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('lat');
             $table->string('long');
+            $table->boolean('isAdmin')->nullable();
         });
     }
 

@@ -8,9 +8,9 @@
 
     <form method="POST" action="/comments">
     {{csrf_field()}}
-    <input type="text" placeholder="User Name" name="userName">
-    <input type="text" placeholder="Content" name="content">
-    <button type="submit"></button>
+    <input type="text" placeholder="Användernamn" name="userName">
+    <input type="text" placeholder="Innehåll" name="content">
+    <button type="submit">Kommentera</button>
 
   </body>
 </html>
