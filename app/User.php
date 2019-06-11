@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
 
     // Maija
-    public function comments(){       // ok att denna är samma som på post.php?
+    public function comments(){       
         return $this->hasMany('App\Comment');
     }
 }
