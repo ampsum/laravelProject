@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\events;
+use App\Event;
 use App\User;
 use \App\Post;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class EventsController extends Controller
     {
         $userId = auth()->user()->id;
         $user = User::findOrFail($userId);
-        $events = events::all();
+        $events = Event::all();
         return view('events.index', ['events' => $events, 'user' => $user]);
     }
 
@@ -40,7 +40,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        // Gets lat & long for the given address 
+        // Gets lat & long for the given address
         $address = request('address');
         $lat = '';
         $long = '';
@@ -57,7 +57,7 @@ class EventsController extends Controller
         if($cover = $request->file('cover')) {
             $name = $cover->getClientOriginalName();
             if($cover->move('images', $name)) {
-                events::create([
+                Event::create([
                     'title' => request('title'),
                     'address' => request('address'),
                     'date' => request('date'),
@@ -67,7 +67,7 @@ class EventsController extends Controller
                     'long' => $long,
                 ]);
             } else {
-                events::create([
+                Event::create([
                     'title' => request('title'),
                     'address' => request('address'),
                     'date' => request('date'),
@@ -78,7 +78,7 @@ class EventsController extends Controller
                 ]);
             }
         } else {
-            events::create([
+            Event::create([
                     'title' => request('title'),
                     'address' => request('address'),
                     'date' => request('date'),
@@ -88,7 +88,7 @@ class EventsController extends Controller
                     'long' => $long,
                 ]);
         };
-        
+
          return redirect('/events');
     }
 
@@ -100,7 +100,7 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        $event = events::findOrFail($id);
+        $event = Event::findOrFail($id);
         return view('events.show', compact('event'));
     }
 
@@ -112,8 +112,8 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-       $event = events::findOrFail($id);
-       return view('events.edit', compact('event')); 
+       $event = Event::findOrFail($id);
+       return view('events.edit', compact('event'));
     }
 
     /**
@@ -124,7 +124,7 @@ class EventsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
-    {   
+    {
         $address = request('address');
         $lat = '';
         $long = '';
@@ -137,7 +137,7 @@ class EventsController extends Controller
                 $long = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
             }
         }
-        $event = events::findOrFail($id);
+        $event = Event::findOrFail($id);
         if($cover = $request->file('cover')) {
             $name = $cover->getClientOriginalName();
             if($cover->move('images', $name)) {
@@ -180,7 +180,7 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        events::findOrFail($id)->delete();
+        Event::findOrFail($id)->delete();
         return redirect('/events');
     }
 }

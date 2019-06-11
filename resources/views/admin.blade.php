@@ -42,7 +42,18 @@
                             @foreach ($comments as $comment)
                                 <li class="">
                                         <strong>kommentar av användaren {{ $comment->userName }} på post {{ $comment->post_id }}:</strong>
-                                        <p>{{$comment->content}}</p>
+                                        <p>
+                                          {{$comment->content}}
+                                        <form action="/comments/{{$comment->id}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <!-- <div class="form-group row">
+                                                <div class="col-md-6"> -->
+                                                    <input class="btn btn-primary" type="submit" name="submit" value="Radera kommentar">
+                                                <!-- </div>
+                                            </div> -->
+                                        </form>
+                                        </p>
                                 </li>
                             @endforeach
                         @endif

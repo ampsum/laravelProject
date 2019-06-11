@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/comments', 'CommentsController@index');
 // Route::get('/comments/create', 'CommentsController@create');  // för att visa create-sidan
 Route::post('/comments', 'CommentsController@store');   // för att posta från kommentarformulär
+Route::delete('/comments/{comment}', 'CommentsController@destroy');
 
 Route::get('/home', 'HomeController@show')->name('home');
 Route::get('/home/{user}/edit', 'HomeController@edit');

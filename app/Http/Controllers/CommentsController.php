@@ -33,4 +33,14 @@ class CommentsController extends Controller
     	return back();
     }
 
+      public function destroy (Comment $comment){
+          if (auth()->user()->isAdmin){
+              $comment->delete();
+              return redirect('/admin/routes');
+            }
+            else{
+              $comment->delete();
+              return redirect('/posts');
+            }
+     }
 }
