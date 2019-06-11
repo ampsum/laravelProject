@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use \App\Comment;
 use \App\User;
 use \App\Post;
+use \App\Event;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class HomeController extends Controller
       $users = User::all();
       $posts = Post::all();
       $comments = Comment::all();
-      return view('admin', ['users' => $users, 'posts' => $posts, 'comments' => $comments]);
+      $events = Event::all();
+      return view('admin', ['users' => $users, 'posts' => $posts, 'comments' => $comments, 'events' => $events]);
     }
 
     public function show(){
