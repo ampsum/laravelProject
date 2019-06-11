@@ -76,7 +76,7 @@ class PostsController extends Controller
 
     public function destroy (Post $post){
         if (auth()->user()->isAdmin){
-            $post->delete();
+            $post-> delete();
             return back();
         }
         else{
