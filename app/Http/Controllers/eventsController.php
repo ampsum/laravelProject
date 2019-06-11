@@ -180,7 +180,7 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        events::findOrFail($id)->delete();
+        Event::findOrFail($id)->delete();
         return back();
     }
 }

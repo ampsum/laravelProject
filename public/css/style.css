@@ -72,6 +72,7 @@ select {
 
 .card {
     margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 /* Header */
@@ -266,6 +267,17 @@ section.hero {
 
 li {
     list-style: none;
+}
+
+/* Admin page */
+
+.admin-list{
+    flex-direction: row;
+    display: inline;
+}
+
+.admin-list-item {
+    display: block;
 }
 
 /* Hero-small */
