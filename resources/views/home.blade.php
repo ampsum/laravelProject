@@ -15,21 +15,6 @@
                             </div>
                         @endif
                         <div>
-
-
-                          <?php if(auth()->user()->isAdmin == 1){?>
-
-                          <div class="panel-body">
-
-                          <a href="{{url('admin/routes')}}">Till adminpanelen</a>
-
-                          </div>
-
-                        <?php }
-                        else echo '<div class="panel-heading">Vanlig användare</div>';?>
-
-
-
                         <h2>Mina uppgifter</h2>
                         @foreach ($users as $user)
                             <p>Namn: {{$user->name}}</p>
