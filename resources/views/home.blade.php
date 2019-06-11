@@ -16,7 +16,6 @@
                         @endif
                         <div>
 
-
                         <h2>Mina uppgifter</h2>
                         @foreach ($users as $user)
                             <p>Namn: {{$user->name}}</p>
@@ -27,9 +26,9 @@
                                 <a href="/home/{{$user->id}}/edit">Ändra</a>
                             </p>
                             <br>
-                        @if($posts->count(1))
+                        @if($user->posts->count(1))
                             <h2>Mina inlägg</h2>
-                            @foreach ($posts as $post)
+                            @foreach ($user->posts as $post)
                                 <li class="">
                                     <a href="/posts/{{$post->id}}">
                                         <h2>{{$post->title}}</h2>
@@ -42,8 +41,6 @@
                                 @endforeach
                             @endforeach
                         @endif
-
-
                     </div>
                 </div>
             </div>
