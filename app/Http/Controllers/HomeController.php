@@ -51,14 +51,27 @@ class HomeController extends Controller
     }
 
     public function update(User $user){
-
-        $validated = request()->validate([
-            'name' => ['required', 'min:3'],
-            'adress' => ['required', 'min:3'],
-            'email' => ['required', 'min:3'],
-        ]);
-        $user->update($validated);
-        return redirect('/home');
+        if (auth()->user()->isAdmin) {
+            if($user->isAdmin == 0){
+                $user->isAdmin = 1;
+                $user->save();
+                return back();
+            }
+            elseif($user->isAdmin == 1){
+                $user->isAdmin = 0;
+                $user->save();
+                return back();
+            }
+        }
+        else {
+            $validated = request()->validate([
+                'name' => ['required', 'min:3'],
+                'adress' => ['required', 'min:3'],
+                'email' => ['required', 'min:3'],
+            ]);
+            $user->update($validated);
+            return redirect('/home');
+        }
     }
 
     public function destroy (User $user){

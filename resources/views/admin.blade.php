@@ -14,16 +14,41 @@
                         <div class="col">
                             <h2>Alla användare</h2>
                             @foreach ($users as $user)
-                            <table class="adminpanel-table">
-                              <tr>
-                                <td class="adminpanel-td-50">
-                                  <p>Namn: {{$user->name}}</p>
-                                </td>
-                                <td class="adminpanel-td-50">
-                                  <p>Email: {{$user->email}}</p>
-                                </td>
-                              </tr>
-                            </table>
+                                <table class="adminpanel-table">
+                                    <tr>
+                                        <td class="adminpanel-td-30">
+                                            <p>Namn: {{$user->name}}</p>
+                                        </td>
+                                        <td class="adminpanel-td-30">
+                                            <p>Email: {{$user->email}}</p>
+                                        </td>
+                                        <td class="adminpanel-td-30">
+                                            <p>Behörighet:
+                                                @if ($user->isAdmin == 0)
+                                                    Användare
+                                                @elseif ($user->isAdmin == 1)
+                                                    Admin
+                                            @endif
+                                        </td>
+                                        @if ($user->isAdmin == 0)
+                                        <td class="adminpanel-td-right">
+                                            <form action="/home/{{$user->id}}" method="POST">
+                                                @method('PATCH')
+                                                @csrf
+                                                <input class="btn btn-primary" type="submit" name="submit" value="Gör till admin">
+                                            </form>
+                                        </td>
+                                        @elseif ($user->isAdmin == 1)
+                                        <td class="adminpanel-td-right">
+                                            <form action="/home/{{$user->id}}" method="POST">
+                                                @method('PATCH')
+                                                @csrf
+                                                <input class="btn btn-danger" type="submit" name="submit" value="Ta bort admin">
+                                            </form>
+                                        </td>
+                                            @endif
+                                    </tr>
+                                </table>
                             @endforeach
                         </div>
                         <div class="col">
