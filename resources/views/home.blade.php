@@ -16,12 +16,10 @@
                         @endif
                         <div>
                         <h2>Mina uppgifter</h2>
-                        @foreach ($users as $user)
                             <p>Namn: {{$user->name}}</p>
                             <p>Adress: {{$user->address}}</p>
                             <p>Email: {{$user->email}}</p>
-                        @endforeach
-                            <p>
+                           <p>
                                 <a href="/home/{{$user->id}}/edit">Ändra</a>
                             </p>
                             <br>
