@@ -14,7 +14,16 @@
                         <div class="col">
                             <h2>Alla användare</h2>
                             @foreach ($users as $user)
-                                <p>Namn: {{$user->name}} | Email: {{$user->email}}</p>
+                            <table class="adminpanel-table">
+                              <tr>
+                                <td class="adminpanel-td-50">
+                                  <p>Namn: {{$user->name}}</p>
+                                </td>
+                                <td class="adminpanel-td-50">
+                                  <p>Email: {{$user->email}}</p>
+                                </td>
+                              </tr>
+                            </table>
                             @endforeach
                         </div>
                         <div class="col">
@@ -22,14 +31,18 @@
                                 <h2>Alla evenemang</h2>
                                 <a class="nav-link" href="/events/create"><input class="btn btn-primary" type="submit" value="Skapa nytt evenemang"></a>
                                 @foreach ($events as $event)
-                                    <li class="">
+                                    <table class="adminpanel-table">
+                                      <tr>
+                                        <td class="adminpanel-td">
                                         <a href="/events/{{$event->id}}">
-                                            <p>{{$event->title}}</p>
+                                            {{$event->title}}
                                         </a>
-                                        <div class="event-controll">
+                                      </td>
+                                      <td class="adminpanel-td-right">
                                             <a href="/events/{{$event->id}}/edit"><input class="btn btn-danger" type="submit" value="Redigera / Radera"></a>
-                                        </div>
-                                    </li>
+                                        </td>
+                                      </tr>
+                                    </table>
                                 @endforeach
                             @endif
                         </div>
@@ -39,18 +52,23 @@
                         <div class="col">
                             @if($posts->count(1))
                                 <h2>Alla inlägg</h2>
-                                <ul>
                                     @foreach ($posts as $post)
-                                        <li>
+                                        <table class="adminpanel-table">
+                                          <tr>
+                                            <td class="adminpanel-td">
                                             <a href="/posts/{{$post->id}}">
                                                 <p class="admin-list-item">{{$post->title}}</p>
                                             </a>
+                                          </td>
+                                          <td class="adminpanel-td-left">
                                             <form action="/posts/{{$post->id}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input class="btn btn-danger" type="submit" name="submit" value="Radera inlägg">
                                             </form>
-                                        </li>
+                                          </td>
+                                        </tr>
+                                      </table>
                                     @endforeach
                                 </ul>
                             @endif
@@ -58,19 +76,28 @@
                         <div class="col">
                             @if($comments->count(1))
                                 <h2>Alla kommentarer</h2>
-                                <ul>
                                     @foreach ($comments as $comment)
-                                        <li>
-                                            <strong>kommentar av användaren {{ $comment->userName }} på post {{ $comment->post_id }}:</strong>
+                                        <table class="adminpanel-table">
+                                          <tr>
+                                            <td style="width:100%;" colspan="2">
+                                            <strong>kommentar av användaren {{ $comment->userName }} på <a href="/posts/{{$comment->post_id}}">post med id-nummer {{ $comment->post_id }}</a>:</strong>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                          <td class="adminpanel-td">
                                             <p>
                                             {{$comment->content}}
                                             </p>
+                                          </td>
+                                          <td class="adminpanel-td-right">
                                             <form action="/comments/{{$comment->id}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <input class="btn btn-danger" type="submit" name="submit" value="Radera kommentar">
+                                                <input class="btn btn-danger adminpanel-btn" type="submit" name="submit" value="Radera kommentar">
                                             </form>
-                                        </li>
+                                          </td>
+                                        </tr>
+                                      </table>
                                     @endforeach
                                 </ul>
                             @endif
