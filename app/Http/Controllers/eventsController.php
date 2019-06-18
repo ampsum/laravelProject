@@ -112,8 +112,13 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-       $event = Event::findOrFail($id);
-       return view('events.edit', compact('event'));
+        if (auth()->user()->isAdmin) {
+            $event = Event::findOrFail($id);
+            return view('events.edit', compact('event'));
+        }
+        else {
+            return redirect('/events');
+        }
     }
 
     /**
@@ -180,7 +185,9 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        Event::findOrFail($id)->delete();
-        return back();
+        if (auth()->user()->isAdmin) {
+            Event::findOrFail($id)->delete();
+            return back();
+        }
     }
 }

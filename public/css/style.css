@@ -123,9 +123,8 @@ select {
 }
 
 #show .warning {
-    color:#c00;
+    color: #c00;
     font-weight: 900;
-    
 }
 
 /* Events */
@@ -271,13 +270,33 @@ li {
 
 /* Admin page */
 
-.admin-list{
+.admin-list {
     flex-direction: row;
     display: inline;
 }
 
 .admin-list-item {
     display: block;
+}
+
+.adminpanel-table {
+    width: 100%;
+}
+
+.adminpanel-td {
+    width: 80%;
+}
+
+.adminpanel-td-50 {
+    width: 50%;
+}
+
+.adminpanel-td-right {
+    text-align: right;
+}
+
+.adminpanel-td-left {
+    text-align: center;
 }
 
 /* Hero-small */
@@ -307,9 +326,7 @@ li {
     text-shadow: -1px 4px 4px #222;
 }
 
-
-
- /* Footer */
+/* Footer */
 
 footer {
     padding: 20px;
@@ -337,43 +354,44 @@ footer .nav-link {
 }
 
 .fa {
-  padding: 10px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  border-radius:5px;
+    padding: 10px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 /* Add a hover effect if you want */
+
 .fa:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 .fa-facebook {
-  background: #3B5998;
-  color: white;
+    background: #3B5998;
+    color: white;
 }
 
 .fa-twitter {
-  background: #55ACEE;
-  color: white;
-} 
+    background: #55ACEE;
+    color: white;
+}
 
 .fa-youtube {
-  background: #bb0000;
-  color: white;
+    background: #bb0000;
+    color: white;
 }
 
 .fa-instagram {
-  background: #125688;
-  color: white;
+    background: #125688;
+    color: white;
 }
 
 .fa-snapchat-ghost {
-  background: #fffc00;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    background: #fffc00;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 @keyframes fadeIn {
