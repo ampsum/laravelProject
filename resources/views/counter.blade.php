@@ -26,7 +26,7 @@
                 $workLong = $workArray['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
             } else {$wrong = 'du har angett en felaktig jobbadress!'; }
           }
-        //counts the distance between the customer & the work
+        //counts the distance between home &  work
           if(!empty($work) && !empty($home) && !empty($homeLat) && !empty($homeLong) && !empty($workLat) && !empty($workLong)) {
             $route = 'https://route.api.here.com/routing/7.2/calculateroute.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&waypoint0='.$workLat. ','. $workLong . '&waypoint1='. $homeLat .',' . $homeLong .'&mode=fastest;car;traffic:disabled';
             $routeJson = file_get_contents($route);
@@ -35,24 +35,30 @@
                 $distanceKM = $routeArray['response']['route'][0]['summary']['distance'];
                 $distanceFloat = number_format($distanceKM);
                 $distance = round($distanceFloat, 0, PHP_ROUND_HALF_ODD);
-            } else {echo 'Något har gått fel! Kolla så att du har fyllt i rätt uppgifter..';}   
-          } 
+            } else {echo 'Något har gått fel! Kolla så att du har fyllt i rätt uppgifter..';}
+          }
     }
 @endphp
 
 
-@extends('layout')
-
+@extends('layouts.app')
+@section('title')
+    Räkna utsläpp
+@endsection
+@section('hero')
+    <section class="container-fluid hero-small counter" style="background-image:url(../images/count.jpg)">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Räkna ditt utsläpp!</h2>
+            </div>
+        </div>
+    </section>
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12 hero-small">
-                <br><br><br>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-9 counter-div">
-                <form action="/counter" method="POST">
+                <form action="/counter" method="POST" id="counter">
                     {{csrf_field()}}
                     <input type="hidden" name="counter-set" value="1">
                     <div class="row">
@@ -74,7 +80,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3>Välj transportmedel</h3>
-                            <select name="transport" >
+                            <div class="select">
+                                <select name="transport" >
                                 <option value="2.94">Personbil bensin</option>
                                 <option value="0.25">Personbil diesel</option>
                                 <option value="0.24">Personbil E-85 (Etanol)</option>
@@ -86,11 +93,12 @@
                                 <option value="0">Tåg</option>
                                 <option value="0">Spårvagn</option>
                             </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <input id="count" type="submit" value="Räkna">
+                            <input class="btn btn-primary" id="count" type="submit" value="Beräkna">
                         </div>
                     </div>
                 </form>
@@ -98,11 +106,12 @@
                 <div class="result">
                     <div class="row">
                         <div class="col-md-12" id="show">
-                            Ditt utsläpp: @php
-                                echo 'ca ' . $distance*$transport . ' CO g/km';
+                            Ditt utsläpp: ca <span class="warning"> @php
+                                echo  $distance*$transport . ' COg';
                             @endphp
-                             <br>
-                            Så här har vi räknat:  <br>
+                            </span>
+                             <hr>
+                            <strong>Så här har vi räknat &#8628;</strong> <br>
                             Din hemadress: @php
                                 if (!empty($home)) :
                                 echo $home['postcode'] .' '. $home['city'];
@@ -113,12 +122,13 @@
                                 echo $work['postcode'] .' '. $work['city'];
                                 endif;
                             @endphp  <br>
-                            Avståndet mellan ditt hem och ditt jobb = @php
+                            Avståndet mellan ditt hem och ditt jobb: @php
                               echo  $distance;
-                            @endphp<br>
-                            Ditt valda transportmedels utsläpp per km = @php
+                            @endphp Km<br>
+                            Ditt valda transportmedels utsläpp per km: @php
                                 echo $transport;
-                            @endphp <br>
+                            @endphp CO<br> <br>
+
                         </div>
                     </div>
                 </div>

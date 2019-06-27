@@ -9,5 +9,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+    protected $hasliked;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

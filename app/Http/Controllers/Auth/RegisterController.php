@@ -63,10 +63,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //Registers the user lat & long in db
+        $address =$data['address'];
+        $lat = '';
+        $long = '';
+        if($address) {
+            $uri = 'https://geocoder.api.here.com/6.2/geocode.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&searchtext='.urlencode($address);
+            $json = file_get_contents($uri);
+            $arr = json_decode($json, true);
+            if(!empty($arr['Response']['View'])) {
+                $lat = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude'];
+                $long = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
+            }
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'address' => $data['address'],
+            'lat' => $lat,
+            'long' => $long
         ]);
     }
 }

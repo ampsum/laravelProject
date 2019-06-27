@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\events;
+use App\Event;
+use App\User;
+use \App\Post;
 use Illuminate\Http\Request;
 
-class eventsController extends Controller
+class EventsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,10 @@ class eventsController extends Controller
      */
     public function index()
     {
-        //
+        $userId = auth()->user()->id;
+        $user = User::findOrFail($userId);
+        $events = Event::all();
+        return view('events.index', ['events' => $events, 'user' => $user]);
     }
 
     /**
@@ -24,7 +29,7 @@ class eventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
     /**
@@ -35,7 +40,56 @@ class eventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Gets lat & long for the given address
+        $address = request('address');
+        $lat = '';
+        $long = '';
+        if($address) {
+            $uri = 'https://geocoder.api.here.com/6.2/geocode.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&searchtext='.urlencode($address);
+            $json = file_get_contents($uri);
+            $arr = json_decode($json, true);
+            if(!empty($arr['Response']['View'])) {
+                $lat = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude'];
+                $long = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
+            }
+        }
+
+        if($cover = $request->file('cover')) {
+            $name = $cover->getClientOriginalName();
+            if($cover->move('images', $name)) {
+                Event::create([
+                    'title' => request('title'),
+                    'address' => request('address'),
+                    'date' => request('date'),
+                    'cover' => $name,
+                    'content' => request('content'),
+                    'lat' => $lat,
+                    'long' => $long,
+                ]);
+            } else {
+                Event::create([
+                    'title' => request('title'),
+                    'address' => request('address'),
+                    'date' => request('date'),
+                    'cover' => 'empty',
+                    'content' => request('content'),
+                    'lat' => $lat,
+                    'long' => $long,
+                ]);
+            }
+        } else {
+            Event::create([
+                    'title' => request('title'),
+                    'address' => request('address'),
+                    'date' => request('date'),
+                    'cover' => 'empty',
+                    'content' => request('content'),
+                    'lat' => $lat,
+                    'long' => $long,
+                ]);
+        };
+
+         return redirect('/events');
     }
 
     /**
@@ -44,9 +98,10 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function show(events $events)
+    public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -55,9 +110,15 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function edit(events $events)
+    public function edit($id)
     {
-        //
+        if (auth()->user()->isAdmin) {
+            $event = Event::findOrFail($id);
+            return view('events.edit', compact('event'));
+        }
+        else {
+            return redirect('/events');
+        }
     }
 
     /**
@@ -67,9 +128,53 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, events $events)
+    public function update($id, Request $request)
     {
-        //
+        $address = request('address');
+        $lat = '';
+        $long = '';
+        if($address) {
+            $uri = 'https://geocoder.api.here.com/6.2/geocode.json?app_id=4lbg6bNUqJVj80BOpcoj&app_code=derEmKtRJUQiPFW5bgUzaQ&searchtext='.urlencode($address);
+            $json = file_get_contents($uri);
+            $arr = json_decode($json, true);
+            if(!empty($arr['Response']['View'])) {
+                $lat = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude'];
+                $long = $arr['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude'];
+            }
+        }
+        $event = Event::findOrFail($id);
+        if($cover = $request->file('cover')) {
+            $name = $cover->getClientOriginalName();
+            if($cover->move('images', $name)) {
+                $event->title = request('title');
+                $event->address = request('address');
+                $event->date = request('date');
+                $event->cover =  $name;
+                $event->content =   request('content');
+                $event->lat  =  $lat;
+                $event->long = $long;
+                $event->save();
+            } else {
+                $event->title = request('title');
+                $event->address = request('address');
+                $event->date = request('date');
+                $event->cover =  'empty';
+                $event->content =   request('content');
+                $event->lat  =  $lat;
+                $event->long = $long;
+                $event->save();
+            }
+        } else {
+                $event->title = request('title');
+                $event->address = request('address');
+                $event->date = request('date');
+                $event->cover =  'empty';
+                $event->content =   request('content');
+                $event->lat  =  $lat;
+                $event->long = $long;
+                $event->save();
+        }
+         return redirect('/events');
     }
 
     /**
@@ -78,8 +183,11 @@ class eventsController extends Controller
      * @param  \App\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(events $events)
+    public function destroy($id)
     {
-        //
+        if (auth()->user()->isAdmin) {
+            Event::findOrFail($id)->delete();
+            return back();
+        }
     }
 }
